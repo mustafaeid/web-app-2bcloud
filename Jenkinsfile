@@ -34,7 +34,7 @@ pipeline {
         stage('Push Docker Image') {
             steps {
                 script {
-                    docker.withRegistry("https://${env.DOCKER_REGISTRY_URL}", acr_credentials_id) {
+                    docker.withRegistry("https://${env.DOCKER_REGISTRY_URL}", ACR_CREDENTIALS_ID) {
                         docker.image(DOCKER_IMAGE).push()
                     }
                 }

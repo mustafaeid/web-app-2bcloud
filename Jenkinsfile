@@ -44,7 +44,6 @@ pipeline {
                     }
                 }
             }
-        }
 
         stage('Deploy to AKS') {
             steps {

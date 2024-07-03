@@ -38,6 +38,7 @@ pipeline {
                 az login --service-principal --username $AZURE_CLIENT_ID --password $AZURE_CLIENT_SECRET --tenant $AZURE_TENANT_ID 
                 az acr login --name $ACR_NAME
                 docker push $DOCKER_IMAGE
+                """
 
 
                     }
@@ -47,7 +48,6 @@ pipeline {
 
         stage('Deploy to AKS') {
             steps {
-                // withCredentials([azureServicePrincipal(credentialsId: aks-credentials-id)]) {
                 script {
                         sh """
                         az login --service-principal --username $AZURE_CLIENT_ID --password $AZURE_CLIENT_SECRET --tenant $AZURE_TENANT_ID 
@@ -55,7 +55,6 @@ pipeline {
                         kubectl apply -f k8s/deployment.yaml         
                         kubectl apply -f k8s/service.yaml
                         """
-                    // }
                 }
             }
         }

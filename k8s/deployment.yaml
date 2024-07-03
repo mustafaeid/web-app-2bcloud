@@ -18,6 +18,12 @@ spec:
       containers:
       - name: hello-world
         image: bcloudacr.azurecr.io/samples/python-image:latest
+        resources:
+          requests:
+            cpu: "100m"  # Requesting 100 milliCPU
+          limits:
+            cpu: "500m"  # Limiting to 500 milliCPU
+
         ports:
         - containerPort: 80
     

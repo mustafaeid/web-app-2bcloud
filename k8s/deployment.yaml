@@ -20,9 +20,11 @@ spec:
         image: bcloudacr.azurecr.io/samples/python-image:latest
         resources:
           requests:
-            cpu: "100m"  # Requesting 100 milliCPU
+            cpu: "100m"    # Requesting 100 milliCPU
+            memory: "256Mi"
           limits:
             cpu: "500m"  # Limiting to 500 milliCPU
+            memory: "512Mi"
 
         ports:
         - containerPort: 80
